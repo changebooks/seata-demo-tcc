@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    max-connections: 20000
+    # 最大等待队列，默认：100
+    accept-count: 1000
+    threads:
+      # 最大线程，默认：200
+      max: 1000
+      # 初始线程，默认：10
+      min-spare: 30
+
+spring:
+  application:
+    # 项目名，小写，"-"连接
+    name: seata-demo-tcc-biz-shop
+  messages:
+    basename: i18n/messages
+  aop:
+    proxy-target-class: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization.write-dates-as-timestamps: false

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.changebooks.seata.demo.tcc.repository.order.database.OrdersDatabase">
+
+    <select id="find" resultType="integer">
+        SELECT pay_status FROM orders
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO orders (id, user_id, product_id, product_num, pay_num, pay_status)
+        VALUES (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER},
+                #{productNum,jdbcType=INTEGER}, #{payNum,jdbcType=INTEGER}, 1)
+    </insert>
+
+    <update id="update">
+        UPDATE orders
+        <set>
+            pay_status = #{payStatus,jdbcType=INTEGER},
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

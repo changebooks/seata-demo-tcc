@@ -1,0 +1,84 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Eclipse ###
+# > except the following, primarily for formatting purposes
+!.settings/org.eclipse.jdt.core.prefs
+!.settings/org.eclipse.jdt.ui.prefs
+!.settings/org.eclipse.wst.html.core.prefs
+# > other misc eclipse artifacts
+bin
+atlassian-ide-plugin.xml
+
+### Gradle ###
+.gradle
+build
+/build
+/target
+
+### Structure101 ###
+japp.java.hsp
+
+### jspm ###
+jspm_packages/
+npm-debug.log
+.cram/
+
+### Concourse ###
+concourse/credentials.yml
+
+### Target ###
+target-code/
+target-dict/
+
+### 其他 ###
+*~
+.#*
+dependency-reduced-pom.xml
+classes/
+logs/
+log/
+temp/
+tmp/
+lib/
+dist/
+data/
+work/
+*.class
+*.log
+*.tar.gz
+*.sw[op]
+.DS_Store
+.bower-*

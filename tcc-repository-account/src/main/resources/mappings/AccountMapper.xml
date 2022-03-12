@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.changebooks.seata.demo.tcc.repository.account.database.AccountDatabase">
+
+    <update id="freeze">
+        UPDATE account
+        <set>
+            usable_balance = usable_balance - #{num,jdbcType=INTEGER},
+            frozen_balance = frozen_balance + #{num,jdbcType=INTEGER},
+        </set>
+        <where>
+            AND user_id = #{userId,jdbcType=INTEGER}
+            AND usable_balance >= #{num,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <update id="unfreeze">
+        UPDATE account
+        <set>
+            usable_balance = usable_balance + #{num,jdbcType=INTEGER},
+            frozen_balance = frozen_balance - #{num,jdbcType=INTEGER},
+        </set>
+        <where>
+            AND user_id = #{userId,jdbcType=INTEGER}
+            AND frozen_balance >= #{num,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <update id="decreaseFrozen">
+        UPDATE account
+        <set>
+            frozen_balance = frozen_balance - #{num,jdbcType=INTEGER},
+        </set>
+        <where>
+            AND user_id = #{userId,jdbcType=INTEGER}
+            AND frozen_balance >= #{num,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

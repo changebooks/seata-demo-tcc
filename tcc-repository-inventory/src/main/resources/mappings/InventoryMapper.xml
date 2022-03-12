@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.changebooks.seata.demo.tcc.repository.inventory.database.InventoryDatabase">
+
+    <update id="inStock">
+        UPDATE inventory
+        <set>
+            stock_num = stock_num + #{num,jdbcType=INTEGER},
+        </set>
+        <where>
+            AND product_id = #{productId,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <update id="outStock">
+        UPDATE inventory
+        <set>
+            stock_num = stock_num - #{num,jdbcType=INTEGER},
+        </set>
+        <where>
+            AND product_id = #{productId,jdbcType=INTEGER}
+            AND stock_num >= #{num,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

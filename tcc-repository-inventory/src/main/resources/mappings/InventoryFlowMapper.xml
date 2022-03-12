@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.changebooks.seata.demo.tcc.repository.inventory.database.InventoryFlowDatabase">
+
+    <select id="find" resultType="integer">
+        SELECT id FROM inventory_flow
+        <where>
+            AND product_id = #{productId,jdbcType=INTEGER}
+            AND change_type = #{changeType,jdbcType=INTEGER}
+            AND idempotent = #{idempotent,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO inventory_flow (product_id, change_type, stock_num, order_id, idempotent)
+        VALUES (#{productId,jdbcType=INTEGER}, #{changeType,jdbcType=INTEGER}, #{stockNum,jdbcType=INTEGER},
+                #{orderId,jdbcType=INTEGER}, #{idempotent,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>

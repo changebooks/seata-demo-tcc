@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.changebooks.seata.demo.tcc.repository.account.database.AccountFlowDatabase">
+
+    <select id="find" resultType="integer">
+        SELECT id FROM account_flow
+        <where>
+            AND user_id = #{userId,jdbcType=INTEGER}
+            AND change_type = #{changeType,jdbcType=INTEGER}
+            AND idempotent = #{idempotent,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO account_flow (user_id, change_type, usable_balance, frozen_balance, order_id, idempotent)
+        VALUES (#{userId,jdbcType=INTEGER}, #{changeType,jdbcType=INTEGER}, #{usableBalance,jdbcType=INTEGER},
+                #{frozenBalance,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{idempotent,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>
