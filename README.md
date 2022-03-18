@@ -25,12 +25,6 @@
 5、启动：seata-server-1.4.2/bin/seata-server.bat 或 seata-server-1.4.2/bin/seata-server.sh
 ```
 
-### seata-demo-tcc file.conf
-```
-修改 repository account、repository inventory、repository order、biz shop 的 main/resources/file.conf
-seata-demo-server.grouplist = "127.0.0.1:8091" -> seata-demo-server.grouplist = "IP:8091"
-```
-
 ### 启动 seata-demo-tcc
 ```
 1、启动
